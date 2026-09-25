@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #0f0e0c;
+    color: #f4f1ea;
+    overflow-x: hidden;
+    min-height: 100dvh;
+  }
+
+  /* Accessible focus indicator for keyboard users */
+  :focus-visible {
+    outline: 2px solid #c85a32;
+    outline-offset: 2px;
+  }
+
+  /* Improve tap responsiveness on mobile */
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #141310;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2e2b27;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c85a32;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Architectural grid pattern background utility */
+.blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(200, 90, 50, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(200, 90, 50, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.blueprint-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.blueprint-mode {
+  background-color: #0a111a !important;
+  color: #e2e8f0 !important;
+}
+
+.blueprint-mode .border-studio-800 {
+  border-color: rgba(56, 189, 248, 0.25) !important;
+}
+
+.blueprint-mode .text-clay-400,
+.blueprint-mode .text-clay-500 {
+  color: #38bdf8 !important;
+}
+
+.blueprint-mode .bg-clay-500 {
+  background-color: #0284c7 !important;
+}
+
+.blueprint-mode .border-clay-500 {
+  border-color: #38bdf8 !important;
+}
+
+/* Subtle architectural grain */
+.bg-grain {
+  background-image: radial-gradient(rgba(244, 241, 234, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Mobile backdrop performance fallback */
+@media (max-width: 640px) {
+  .backdrop-blur-xl,
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
