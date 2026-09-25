@@ -187,7 +187,6 @@ npm run preview
 ```
 
 ---
-
 ## 🌍 Deployment
 
 **Hosting provider:** GitHub Pages (free, static, no paid plan or credit card required).
@@ -197,26 +196,29 @@ npm run preview
 | Setting | Value |
 | :--- | :--- |
 | Repository | https://github.com/penndivinefavour-lab/beko-building-workshop |
-| Branch | `main` |
-| Build command | `npm run build:pages` |
+| Source branch | `main` |
+| Deployed branch | `gh-pages` (published via build script) |
+| Build command | `VITE_BASE_PATH=/beko-building-workshop/ npm run build` |
 | Output directory | `dist` |
 | Node version | 20 |
-| Pages source | GitHub Actions |
 
 ### How deployment works
 
-[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) runs on every push to `main`,
-on manual dispatch, and on a weekly schedule. It installs dependencies with `npm ci`, runs the
-TypeScript check, builds the site, and publishes `dist/` to GitHub Pages via
-`actions/upload-pages-artifact` + `actions/deploy-pages`.
+This project uses a **branch-based deployment** strategy. A build script (`scripts/deploy-pages.sh`)
+creates a temporary Git worktree, copies the production `dist/` output (including a `.nojekyll`
+marker) into an orphan `gh-pages` branch, and force-pushes it to the remote. GitHub Pages
+automatically serves the `gh-pages` branch as a static site.
+
+No GitHub Actions workflow file is committed to this repository — the deployment is performed
+externally via the build script. The source of truth remains `main`.
 
 ### Base path handling
 
 GitHub Pages serves this project from a **subpath** (`/beko-building-workshop/`), so asset URLs must
 be prefixed accordingly. `vite.config.ts` reads the `VITE_BASE_PATH` environment variable:
 
-- `npm run build:pages` sets `VITE_BASE_PATH=/beko-building-workshop/` for the Pages subpath.
-- `npm run build` leaves the base at `/` for root-level hosts (Netlify, Vercel, custom domains).
+- `VITE_BASE_PATH=/beko-building-workshop/ npm run build` — builds for the Pages subpath (default deploy target).
+- `npm run build` — leaves the base at `/` for root-level hosts (Netlify, Vercel, custom domains).
 
 Application code never hardcodes `/assets/...`. It resolves runtime image URLs through
 `src/lib/assetPath.ts`, which reads Vite's inlined `import.meta.env.BASE_URL`. The same source
@@ -227,18 +229,14 @@ files verbatim rather than filtering them through Jekyll.
 
 ### Deploying your own copy
 
-1. Fork or clone the repository.
-2. In **Settings → Pages**, set **Source** to **GitHub Actions**.
-3. Push to `main` — the workflow builds and publishes automatically.
-4. If your repository name differs, update `VITE_BASE_PATH` in the `build:pages` script in
-   `package.json` to match `/<your-repo-name>/`.
+To deploy on your own GitHub account:
+
+1. Fork or clone the repository and set up push access.
+2. Update the `REPO_SLUG` variable in [`scripts/deploy-pages.sh`](scripts/deploy-pages.sh) to match your organization and repository name.
+3. Run `./scripts/deploy-pages.sh` to build and publish.
+4. In **GitHub Settings → Pages**, ensure **Source** is set to **Deploy from a branch** and select `gh-pages`.
+5. If your repository name differs, also update `BASE_PATH` in the script and the `VITE_BASE_PATH` value passed to the build.
 
 No environment variables, secrets, or API keys are required to build or deploy this project.
 
 ---
-
-## 📄 License & Attribution
-
-- **Concept & Implementation**: Developed by **ICON Studios** as a speculative architecture and digital design case study.
-- **Code License**: MIT License. See [LICENSE](LICENSE) for details.
-- **Imagery**: Architectural reference photography utilized for conceptual prototyping and portfolio presentation.
