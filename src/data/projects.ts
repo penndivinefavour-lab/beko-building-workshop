@@ -1,4 +1,5 @@
 import { Project } from '../types';
+import { assetPath } from '../lib/assetPath';
 
 export const projects: Project[] = [
   {
@@ -9,7 +10,7 @@ export const projects: Project[] = [
     categoryLabel: 'Private Residence',
     location: 'Kigali, Rwanda',
     year: '2024',
-    image: '/assets/projects/kigali-residence.webp',
+    image: assetPath('/assets/projects/kigali-residence.webp'),
     description: 'Embedded into the topography of Kigali’s thousand hills, the Nyirangarama Ridge Sanctuary harmonizes monolithic compressed earth construction with cantilevered timber sunshades. The residence harnesses gravity-fed valley breezes to eliminate conventional mechanical air conditioning.',
     architecturalConcept: 'The building is structured as a series of stepped geological strata. Excavated volcanic red soil from site footing was stabilized on-site with 6% pozzolanic binder and pressed into 450mm thermal mass walls. Glazed sliding facades recess completely into wall pockets during dusk, merging the central salon with endemic flora terraces.',
     specs: {
@@ -55,7 +56,7 @@ export const projects: Project[] = [
     categoryLabel: 'Workplace & R&D',
     location: 'Nairobi, Kenya',
     year: '2023',
-    image: '/assets/projects/nairobi-innovation-hub.webp',
+    image: assetPath('/assets/projects/nairobi-innovation-hub.webp'),
     description: 'A 6-storey civic workplace engineered as a lung for high-density Nairobi. Wrapped in a double-skin kinetic terracotta brise-soleil crafted in collaboration with Murang’a ceramicists, the campus reduces solar heat gain by 64% while maintaining abundant natural daylight.',
     architecturalConcept: 'Rather than a sealed glass tower, we conceived a permeable vertical village. Atrium stepped lightwells induce continuous vertical air draft, pulling cooler air from shaded courtyard gardens through working floors. The structural framework combines regional eucalyptus mass-timber glue-laminated columns with low-clinker hybrid slabs.',
     specs: {
@@ -101,7 +102,7 @@ export const projects: Project[] = [
     categoryLabel: 'Eco-Hospitality',
     location: 'Matemwe, Zanzibar',
     year: '2024',
-    image: '/assets/projects/zanzibar-sanctuary.webp',
+    image: assetPath('/assets/projects/zanzibar-sanctuary.webp'),
     description: 'Set between mangrove saltwater estuaries and the Indian Ocean reef, this low-impact sanctuary reinterprets Swahili coastal tectonic traditions. Raised on stilts above fragile littoral ecologies, the pavilion roofs capture monsoon trade winds to cool ocean suites passively.',
     architecturalConcept: 'To respect coastal erosion dynamics and sacred mangrove channels, zero concrete was poured in the intertidal zone. Foundations utilize screw-piles with zero marine disturbance. Pavilions are crafted from storm-felled dhow timber, lime-mortared indigenous fossilized stone, and permeable palm thatch canopies.',
     specs: {
@@ -147,7 +148,7 @@ export const projects: Project[] = [
     categoryLabel: 'Civic & Cultural',
     location: 'Victoria Island, Lagos',
     year: '2025',
-    image: '/assets/projects/lagos-arts-centre.webp',
+    image: assetPath('/assets/projects/lagos-arts-centre.webp'),
     description: 'Conceived as an open living room for Lagos’ vibrant creative vanguard, the Eko Pavilion opens its perimeter completely to the maritime lagoon. Monolithic folded plates cast with crushed oyster shell aggregate shield galleries from tropical downpours while framing dramatic water vistas.',
     architecturalConcept: 'The design mediates between the immense energy of Lagos and the contemplative silence required for art. A continuous public ramp weaves visitors through sculpture courts, open-air amphitheaters, and climate-controlled vault galleries, crowned by an acoustic brass ceiling modeled on regional textile geometry.',
     specs: {
@@ -193,7 +194,7 @@ export const projects: Project[] = [
     categoryLabel: 'Estate & Cellar',
     location: 'Franschhoek, South Africa',
     year: '2023',
-    image: '/assets/projects/cape-winelands-estate.webp',
+    image: assetPath('/assets/projects/cape-winelands-estate.webp'),
     description: 'Carved directly into the granitic slopes of the Franschhoek Valley, this estate merges viticulture with serene residential pavilions. The subterranean barrel cellar maintains a constant 14°C year-round without mechanical cooling through massive thermal earth coupling.',
     architecturalConcept: 'Two parallel dry-stacked Paarl granite walls anchor the project into the mountain incline. Between these geological spine walls, frameless glass sheets slide into pockets, opening expansive living spaces to vineyards and jagged peaks. Native fynbos vegetation covers the continuous green roofs.',
     specs: {
@@ -239,7 +240,7 @@ export const projects: Project[] = [
     categoryLabel: 'Interior Architecture',
     location: 'Les Almadies, Dakar, Senegal',
     year: '2024',
-    image: '/assets/projects/dakar-interior-penthouse.webp',
+    image: assetPath('/assets/projects/dakar-interior-penthouse.webp'),
     description: 'Perched on the westernmost point of the African continent, this 520 m² penthouse celebrates the dramatic confrontation between volcanic Atlantic cliffs and open ocean horizon. Hand-cast lime plaster walls curve organically to soften intense coastal glare.',
     architecturalConcept: 'We removed all decorative cladding to expose the pure structural muscle of the building. In place of standard partitions, sculpted fluted lime plaster volumes separate private chambers from public entertaining salons. Custom furniture was carved by Dakar master woodworkers from salvaged West African teak.',
     specs: {

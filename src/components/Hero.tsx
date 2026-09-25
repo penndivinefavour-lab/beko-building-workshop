@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight, Compass, Sun, Wind } from 'lucide-react';
+import { assetPath } from '../lib/assetPath';
 
 interface HeroProps {
   onOpenCommission: () => void;
@@ -12,9 +13,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCommission, onExploreWorks }) 
       {/* Background Architectural Photography with Optimized WebP & Vignette */}
       <div className="absolute inset-0 z-0">
         <picture>
-          <source srcSet="/assets/hero.webp" type="image/webp" />
+          <source srcSet={assetPath('/assets/hero.webp')} type="image/webp" />
           <img
-            src="/assets/hero.jpg"
+            src={assetPath('/assets/hero.jpg')}
             alt="BEKO Building Workshop Speculative Architecture"
             fetchPriority="high"
             decoding="async"
